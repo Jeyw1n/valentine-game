@@ -30,7 +30,7 @@ function App() {
           y: heart.y + 5,
         }))
       );
-    }, 10);
+    }, 20);
     return () => clearInterval(moveInterval);
   }, []);
 
@@ -76,11 +76,7 @@ function App() {
               className='heart'
               style={{ left: heart.x, top: heart.y }}
               onClick={() => catchHeart(heart.id)}
-              width="42px"
-              height="42px"
-            >
-             💖
-            </div>
+            >💖</div>
           ))}
         </div>
       )}
