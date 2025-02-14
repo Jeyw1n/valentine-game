@@ -30,7 +30,7 @@ function App() {
           y: heart.y + 5,
         }))
       );
-    }, 10);
+    }, 5);
     return () => clearInterval(moveInterval);
   }, []);
 
