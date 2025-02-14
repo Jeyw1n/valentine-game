@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
+const WINSCORE = 50;
+
 function App() {
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(30);
@@ -28,7 +30,7 @@ function App() {
           y: heart.y + 5,
         }))
       );
-    }, 50);
+    }, 10);
     return () => clearInterval(moveInterval);
   }, []);
 
@@ -49,7 +51,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (score >= 50) {
+    if (score >= WINSCORE) {
       setGameOver(true);
     }
   }, [score]);
@@ -59,7 +61,11 @@ function App() {
       <p>Время: {timeLeft}</p>
       {gameOver ? (
         <div className='game-over'>
-          <h2>{score >= 50 ? "Ты выиграла мое сердце! 💖" : "Попробуй еще раз..."}</h2>
+          <br />
+          <br />
+          <br />
+          <br />
+          <h2>{score >= WINSCORE ? "Ты выиграла мое сердце! 💖" : "Попробуй еще раз..."}</h2>
           <button onClick={() => window.location.reload()}>Играть снова</button>
         </div>
       ) : (
@@ -70,6 +76,8 @@ function App() {
               className='heart'
               style={{ left: heart.x, top: heart.y }}
               onClick={() => catchHeart(heart.id)}
+              width="42px"
+              height="42px"
             >
              💖
             </div>
