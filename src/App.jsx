@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 
 const WINSCORE = 50;
+const heartEmojis = ["💖", "💘", "💝", "💓", "💗", "💞", "💕"];
 
 function App() {
   const [score, setScore] = useState(0);
@@ -14,6 +15,7 @@ function App() {
       const newHeart = {
         id: Math.random(),
         x: Math.random() * window.innerWidth,
+        emoji: heartEmojis[Math.floor(Math.random() * heartEmojis.length)],
         y: 0,
       };
       setHearts((prevHearts) => [...prevHearts, newHeart]);
@@ -27,10 +29,10 @@ function App() {
       setHearts((prevHearts) =>
         prevHearts.map((heart) => ({
           ...heart,
-          y: heart.y + 5,
+          y: heart.y + 3,
         }))
       );
-    }, 5);
+    }, 10);
     return () => clearInterval(moveInterval);
   }, []);
 
@@ -80,12 +82,12 @@ function App() {
               className='heart'
               style={{ left: heart.x, top: heart.y }}
               onClick={() => catchHeart(heart.id)}
-            >💖</div>
+            >{heart.emoji}</div>
           ))}
         </div>
       )}
     </div>
-  )
+  ) 
 }
 
 export default App
